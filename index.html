@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Nabila Shop Gaming & Digital - Top Up Diamonds & Layanan Digital Terpercaya</title>
+    <meta name="description" content="Nabila Shop menyediakan layanan top up diamond MLBB, Free Fire, HAGO, BIGO Live, koin Star Maker & SUGO dengan harga termurah. Tersedia juga jasa unbanned WhatsApp dan optimasi YouTube.">
+    <meta name="keywords" content="top up ml, top up ff, diamond ml murah, nabila shop, jasa unbanned wa, jasa subscribe youtube, topup hago, topup bigo, spotify premium murah">
+    <meta name="author" content="Nabila Shop Gaming And Digital">
+
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #9b59b6;
+            --secondary-color: #8e44ad;
+            --light-gold: #f1c40f;
+            --dark-bg: #2c3e50;
+            --light-bg: #34495e;
+            --text-color: #ecf0f1;
+            --glow-color: #a55eea;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            overflow: hidden;
+            display: flex;
+            position: relative; /* Diperlukan untuk mobile menu overlay */
+        }
+        
+        /* --- Notifikasi Berjalan (DIPERLAMBAT) --- */
+        .marquee-container {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--light-gold));
+            color: #1a1a1a; padding: 10px 0; z-index: 1000;
+            overflow: hidden; white-space: nowrap; font-weight: 600;
+        }
+
+        .marquee-content {
+            display: inline-block; padding-left: 100%;
+            /* KECEPATAN DIRUBAH DARI 90s MENJADI 180s AGAR LEBIH LAMBAT */
+            animation: marquee 180s linear infinite;
+        }
+
+        .marquee-content span { margin: 0 25px; }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* --- Tombol Menu Mobile --- */
+        #menu-toggle {
+            display: none; /* Sembunyi di desktop */
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1100;
+            background: var(--light-bg);
+            color: var(--light-gold);
+            border: none;
+            padding: 10px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.5em;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* --- Sidebar --- */
+        #sidebar {
+            width: 260px; height: 100vh;
+            background-color: var(--light-bg);
+            padding-top: 70px;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+            z-index: 900;
+            overflow-y: auto;
+            /* Transisi untuk buka-tutup di mobile */
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        #sidebar::-webkit-scrollbar { display: none; }
+        #sidebar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        #sidebar .logo {
+            text-align: center; padding: 20px;
+            font-family: 'Orbitron', sans-serif; font-size: 1.5em;
+            color: var(--light-gold); text-shadow: 0 0 10px var(--light-gold);
+        }
+
+        #sidebar ul { list-style: none; }
+
+        #sidebar ul li a {
+            padding: 15px 20px; display: flex; align-items: center;
+            color: var(--text-color); text-decoration: none;
+            border-left: 5px solid transparent;
+            transition: all 0.3s; font-size: 0.95em;
+        }
+
+        #sidebar ul li a:hover, #sidebar ul li a.active {
+            background-color: var(--primary-color);
+            border-left: 5px solid var(--light-gold);
+        }
+
+        #sidebar ul li a i { margin-right: 15px; width: 20px; text-align: center; }
+
+        /* --- Main Content --- */
+        #main-content {
+            flex-grow: 1; padding-top: 70px; height: 100vh; overflow-y: auto;
+        }
+
+        .content-section {
+            display: none; padding: 20px; animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .content-section.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif; color: var(--light-gold);
+            text-align: center; margin-bottom: 30px; font-size: 2em;
+            text-shadow: 0 0 15px var(--light-gold);
+        }
+        
+        .section-subtitle {
+            text-align: center; font-size: 1.1em;
+            margin-top: -20px; margin-bottom: 30px;
+            color: #bdc3c7;
+        }
+
+        /* --- Product Card & Grid (Sama, tidak diubah) --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: var(--light-bg); border-radius: 15px; overflow: hidden;
+            border: 2px solid transparent; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer; position: relative;
+        }
+        /* ... (style kartu produk mewah lainnya tetap sama) ... */
+        .product-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(transparent,var(--glow-color),transparent 30%);animation:rotate 4s linear infinite;opacity:0;transition:opacity .4s}@keyframes rotate{to{transform:rotate(360deg)}}.product-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 0 30px var(--glow-color);border-color:var(--glow-color)}.product-card:hover::before{opacity:1}.product-card-content{padding:20px;position:relative;z-index:1;background:var(--light-bg);border-radius:13px}.product-icon{font-size:2.5em;text-align:center;margin-bottom:15px;color:var(--light-gold)}.product-name{font-size:1.15em;font-weight:600;text-align:center}.product-price{font-size:1.3em;font-weight:700;text-align:center;color:var(--light-gold);margin-top:10px}.product-note{font-size:.8em;text-align:center;color:#bdc3c7;margin-top:5px}
+
+        /* --- Modal (Sama, tidak diubah) --- */
+        .modal{display:none;position:fixed;z-index:2000;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,.7);animation:fadeIn .3s}.modal-content{background-color:var(--light-bg);margin:15% auto;padding:25px;border:1px solid var(--primary-color);width:90%;max-width:500px;border-radius:15px;box-shadow:0 0 40px var(--glow-color)}.close-btn{color:#aaa;float:right;font-size:28px;font-weight:bold;cursor:pointer}.modal h2{text-align:center;color:var(--light-gold);margin-bottom:20px}.modal-form .form-group{margin-bottom:15px}.modal-form label{display:block;margin-bottom:5px}.modal-form input,.modal-form select,.modal-form textarea{width:100%;padding:12px;background-color:var(--dark-bg);border:1px solid var(--primary-color);border-radius:8px;color:var(--text-color);font-family:'Poppins',sans-serif}.modal-form textarea{resize:vertical;min-height:80px}.modal-form #upload-label{display:block;padding:12px;background-color:#3498db;color:#fff;text-align:center;border-radius:8px;cursor:pointer;margin-top:10px}.modal-form #upload-proof{display:none}#fileName{margin-top:10px;color:#bdc3c7;text-align:center}.submit-btn{width:100%;padding:15px;background:linear-gradient(90deg,var(--light-gold),#f39c12);border:none;border-radius:8px;color:var(--dark-bg);font-size:1.1em;font-weight:700;cursor:pointer;transition:all .3s}.submit-btn:hover{transform:scale(1.05);box-shadow:0 0 20px var(--light-gold)}
+        
+        #map { width: 100%; height: 400px; border-radius: 15px; border: 3px solid var(--primary-color); }
+
+        /* --- ATURAN RESPONSIVE UNTUK ANDROID/MOBILE --- */
+        @media (max-width: 800px) {
+            body.sidebar-open #sidebar {
+                transform: translateX(0);
+            }
+            
+            #menu-toggle {
+                display: block; /* Tampilkan tombol menu */
+            }
+
+            #sidebar {
+                position: fixed; /* Jadikan fixed agar bisa overlay */
+                top: 0;
+                left: 0;
+                /* Sembunyikan sidebar ke kiri layar */
+                transform: translateX(-100%); 
+            }
+            
+            .content-section {
+                padding: 15px;
+            }
+            .section-title {
+                font-size: 1.8em;
+            }
+             .product-grid {
+                grid-template-columns: 1fr; /* 1 produk per baris */
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Tombol Menu untuk Mobile -->
+    <button id="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="marquee-container">
+        <div class="marquee-content"></div>
+    </div>
+
+    <nav id="sidebar">
+        <!-- Konten sidebar (logo dan menu) sama persis, tidak ada perubahan -->
+        <div class="logo">🤖 Nabila<br>Shop</div>
+        <ul>
+            <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Beranda</a></li>
+            <li><a href="#mlbb" class="nav-link"><i class="fas fa-gem"></i> Diamond MLBB</a></li>
+            <li><a href="#ff" class="nav-link"><i class="fas fa-fire"></i> Diamond Free Fire</a></li>
+            <li><a href="#hago" class="nav-link"><i class="fas fa-grin-beam-sweat"></i> Diamond HAGO</a></li>
+            <li><a href="#bigo" class="nav-link"><i class="fas fa-video"></i> Diamond BIGO</a></li>
+            <li><a href="#starmaker" class="nav-link"><i class="fas fa-star"></i> Coin Star Maker</a></li>
+            <li><a href="#sugo" class="nav-link"><i class="fas fa-coins"></i> Coin SUGO</a></li>
+            <li><a href="#spotify" class="nav-link"><i class="fab fa-spotify"></i> Spotify Premium</a></li>
+            <li><a href="#unbanned" class="nav-link"><i class="fas fa-user-lock"></i> Jasa Unbanned WA</a></li>
+            <li><a href="#youtube" class="nav-link"><i class="fab fa-youtube"></i> Jasa YouTube</a></li>
+            <li><a href="#location" class="nav-link"><i class="fas fa-map-marker-alt"></i> Lokasi Kami</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <!-- SEMUA KONTEN PRODUK DI SINI SAMA PERSIS, TIDAK ADA PERUBAHAN -->
+        <section id="home" class="content-section active">
+            <h1 class="section-title">Selamat Datang di Nabila Shop</h1>
+            <p style="text-align: center; font-size: 1.2em; margin-bottom: 20px;">Platform Top Up Game & Kebutuhan Digital Terlengkap dan Terpercaya.</p>
+            <p style="text-align: center;">Silakan pilih layanan yang Anda butuhkan dari menu di samping. Proses cepat, aman, dan didukung oleh admin yang responsif.<br>Pembayaran mudah melalui <strong>Gopay: 0895340205302</strong>.</p>
+        </section>
+        <section id="mlbb" class="content-section"><h1 class="section-title">💎 Top Up Diamond MLBB</h1><h2 class="section-subtitle">Flash Sale Promo 🔔</h2><div class="product-grid"><div class="product-card" onclick="openModal('Flash Sale MLBB 100 DM', 'Rp. 17.200', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔔</div><div class="product-name">100 Diamonds</div><div class="product-price">Rp. 17.200</div></div></div><div class="product-card" onclick="openModal('Flash Sale MLBB 300 DM', 'Rp. 61.000', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔔</div><div class="product-name">300 Diamonds</div><div class="product-price">Rp. 61.000</div></div></div><div class="product-card" onclick="openModal('Flash Sale MLBB 500 DM', 'Rp. 105.000', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔔</div><div class="product-name">500 Diamonds</div><div class="product-price">Rp. 105.000</div></div></div><div class="product-card" onclick="openModal('Flash Sale MLBB 1000 DM', 'Rp. 203.000', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔔</div><div class="product-name">1000 Diamonds</div><div class="product-price">Rp. 203.000</div></div></div></div><h2 class="section-subtitle" style="margin-top: 40px;">Promo INSTAN 🔥</h2><div class="product-grid"><div class="product-card" onclick="openModal('INSTAN MLBB 5 DM', 'Rp. 2.300', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔥</div><div class="product-name">5 Diamonds</div><div class="product-price">Rp. 2.300</div></div></div><div class="product-card" onclick="openModal('INSTAN MLBB 12 DM', 'Rp. 5.300', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔥</div><div class="product-name">12 Diamonds</div><div class="product-price">Rp. 5.300</div></div></div><div class="product-card" onclick="openModal('INSTAN MLBB 19 DM', 'Rp. 7.500', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔥</div><div class="product-name">19 Diamonds</div><div class="product-price">Rp. 7.500</div></div></div><div class="product-card" onclick="openModal('INSTAN MLBB 28 DM', 'Rp. 11.300', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔥</div><div class="product-name">28 Diamonds</div><div class="product-price">Rp. 11.300</div></div></div><div class="product-card" onclick="openModal('INSTAN MLBB 44 DM', 'Rp. 19.300', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔥</div><div class="product-name">44 Diamonds</div><div class="product-price">Rp. 19.300</div></div></div><div class="product-card" onclick="openModal('INSTAN MLBB 59 DM', 'Rp. 23.300', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔥</div><div class="product-name">59 Diamonds</div><div class="product-price">Rp. 23.300</div></div></div><div class="product-card" onclick="openModal('INSTAN MLBB 85 DM', 'Rp. 33.300', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔥</div><div class="product-name">85 Diamonds</div><div class="product-price">Rp. 33.300</div></div></div><div class="product-card" onclick="openModal('INSTAN MLBB 170 DM', 'Rp. 57.500', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔥</div><div class="product-name">170 Diamonds</div><div class="product-price">Rp. 57.500</div></div></div><div class="product-card" onclick="openModal('INSTAN MLBB 240 DM', 'Rp. 76.300', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔥</div><div class="product-name">240 Diamonds</div><div class="product-price">Rp. 76.300</div></div></div><div class="product-card" onclick="openModal('INSTAN MLBB 296 DM', 'Rp. 94.300', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔥</div><div class="product-name">296 Diamonds</div><div class="product-price">Rp. 94.300</div></div></div><div class="product-card" onclick="openModal('INSTAN MLBB 408 DM', 'Rp. 125.600', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔥</div><div class="product-name">408 Diamonds</div><div class="product-price">Rp. 125.600</div></div></div><div class="product-card" onclick="openModal('INSTAN MLBB 568 DM', 'Rp. 179.500', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔥</div><div class="product-name">568 Diamonds</div><div class="product-price">Rp. 179.500</div></div></div><div class="product-card" onclick="openModal('INSTAN MLBB 875 DM', 'Rp. 267.500', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔥</div><div class="product-name">875 Diamonds</div><div class="product-price">Rp. 267.500</div></div></div><div class="product-card" onclick="openModal('INSTAN MLBB 2010 DM', 'Rp. 703.400', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔥</div><div class="product-name">2010 Diamonds</div><div class="product-price">Rp. 703.400</div></div></div><div class="product-card" onclick="openModal('INSTAN MLBB 4830 DM', 'Rp. 1.403.500', {text:['ID Game', 'Zona ID']})"><div class="product-card-content"><div class="product-icon">🔥</div><div class="product-name">4830 Diamonds</div><div class="product-price">Rp. 1.403.500</div></div></div></div></section>
+        <section id="ff" class="content-section"><h1 class="section-title">🚀 Top Up Diamond Free Fire</h1><div class="product-grid"><div class="product-card" onclick="openModal('Free Fire 5 DM', 'Rp. 1.500', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🚀</div><div class="product-name">5 Diamonds</div><div class="product-price">Rp. 1.500</div></div></div><div class="product-card" onclick="openModal('Free Fire 12 DM', 'Rp. 3.200', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🚀</div><div class="product-name">12 Diamonds</div><div class="product-price">Rp. 3.200</div></div></div><div class="product-card" onclick="openModal('Free Fire 50 DM', 'Rp. 13.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🚀</div><div class="product-name">50 Diamonds</div><div class="product-price">Rp. 13.000</div></div></div><div class="product-card" onclick="openModal('Free Fire 70 DM', 'Rp. 16.500', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🚀</div><div class="product-name">70 Diamonds</div><div class="product-price">Rp. 16.500</div></div></div><div class="product-card" onclick="openModal('Free Fire 140 DM', 'Rp. 28.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🚀</div><div class="product-name">140 Diamonds</div><div class="product-price">Rp. 28.000</div></div></div><div class="product-card" onclick="openModal('Free Fire 355 DM', 'Rp. 65.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🚀</div><div class="product-name">355 Diamonds</div><div class="product-price">Rp. 65.000</div></div></div><div class="product-card" onclick="openModal('Free Fire 720 DM', 'Rp. 120.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🚀</div><div class="product-name">720 Diamonds</div><div class="product-price">Rp. 120.000</div></div></div><div class="product-card" onclick="openModal('Free Fire 1.450 DM', 'Rp. 250.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🚀</div><div class="product-name">1.450 Diamonds</div><div class="product-price">Rp. 250.000</div></div></div><div class="product-card" onclick="openModal('Free Fire 2.180 DM', 'Rp. 370.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🚀</div><div class="product-name">2.180 Diamonds</div><div class="product-price">Rp. 370.000</div></div></div><div class="product-card" onclick="openModal('Free Fire 3.640 DM', 'Rp. 650.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🚀</div><div class="product-name">3.640 Diamonds</div><div class="product-price">Rp. 650.000</div></div></div></div></section>
+        <section id="hago" class="content-section"><h1 class="section-title">🙃 Top Up Diamond HAGO</h1><div class="product-grid"><div class="product-card" onclick="openModal('HAGO 6 DM', 'Rp. 4.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🙃</div><div class="product-name">6 Diamonds</div><div class="product-price">Rp. 4.000</div></div></div><div class="product-card" onclick="openModal('HAGO 46 DM', 'Rp. 18.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🙃</div><div class="product-name">46 Diamonds</div><div class="product-price">Rp. 18.000</div></div></div><div class="product-card" onclick="openModal('HAGO 91 DM', 'Rp. 30.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🙃</div><div class="product-name">91 Diamonds</div><div class="product-price">Rp. 30.000</div></div></div><div class="product-card" onclick="openModal('HAGO 228 DM', 'Rp. 79.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🙃</div><div class="product-name">228 Diamonds</div><div class="product-price">Rp. 79.000</div></div></div><div class="product-card" onclick="openModal('HAGO 381 DM', 'Rp. 132.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🙃</div><div class="product-name">381 Diamonds</div><div class="product-price">Rp. 132.000</div></div></div><div class="product-card" onclick="openModal('HAGO 915 DM', 'Rp. 325.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🙃</div><div class="product-name">915 Diamonds</div><div class="product-price">Rp. 325.000</div></div></div><div class="product-card" onclick="openModal('HAGO 1.680 DM', 'Rp. 598.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🙃</div><div class="product-name">1.680 Diamonds</div><div class="product-price">Rp. 598.000</div></div></div><div class="product-card" onclick="openModal('HAGO 3.362 DM', 'Rp. 1.117.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🙃</div><div class="product-name">3.362 Diamonds</div><div class="product-price">Rp. 1.117.000</div></div></div></div></section>
+        <section id="bigo" class="content-section"><h1 class="section-title">🛒 Top Up Diamond BIGO Live</h1><div class="product-grid"><div class="product-card" onclick="openModal('BIGO Live 100 DM', 'Rp. 33.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🛒</div><div class="product-name">100 Diamonds</div><div class="product-price">Rp. 33.000</div></div></div><div class="product-card" onclick="openModal('BIGO Live 500 DM', 'Rp. 205.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🛒</div><div class="product-name">500 Diamonds</div><div class="product-price">Rp. 205.000</div></div></div><div class="product-card" onclick="openModal('BIGO Live 1.000 DM', 'Rp. 410.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🛒</div><div class="product-name">1.000 Diamonds</div><div class="product-price">Rp. 410.000</div></div></div><div class="product-card" onclick="openModal('BIGO Live 2.500 DM', 'Rp. 905.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🛒</div><div class="product-name">2.500 Diamonds</div><div class="product-price">Rp. 905.000</div></div></div><div class="product-card" onclick="openModal('BIGO Live 5.000 DM', 'Rp. 1.536.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🛒</div><div class="product-name">5.000 Diamonds</div><div class="product-price">Rp. 1.536.000</div></div></div><div class="product-card" onclick="openModal('BIGO Live 10.000 DM', 'Rp. 3.500.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🛒</div><div class="product-name">10.000 Diamonds</div><div class="product-price">Rp. 3.500.000</div></div></div><div class="product-card" onclick="openModal('BIGO Live 50.000 DM', 'Rp. 15.345.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🛒</div><div class="product-name">50.000 Diamonds</div><div class="product-price">Rp. 15.345.000</div></div></div><div class="product-card" onclick="openModal('BIGO Live 100.000 DM', 'Rp. 30.507.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🛒</div><div class="product-name">100.000 Diamonds</div><div class="product-price">Rp. 30.507.000</div></div></div></div></section>
+        <section id="starmaker" class="content-section"><h1 class="section-title">🔔 Top Up Coin STAR MAKER</h1><div class="product-grid"><div class="product-card" onclick="openModal('STAR MAKER 86 Coin', 'Rp. 22.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🏅</div><div class="product-name">86 Coin</div><div class="product-price">Rp. 22.000</div></div></div><div class="product-card" onclick="openModal('STAR MAKER 602 Coin', 'Rp. 143.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🏅</div><div class="product-name">602 Coin</div><div class="product-price">Rp. 143.000</div></div></div><div class="product-card" onclick="openModal('STAR MAKER 860 Coin', 'Rp. 209.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🏅</div><div class="product-name">860 Coin</div><div class="product-price">Rp. 209.000</div></div></div><div class="product-card" onclick="openModal('STAR MAKER 1.720 Coin', 'Rp. 423.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🏅</div><div class="product-name">1.720 Coin</div><div class="product-price">Rp. 423.000</div></div></div><div class="product-card" onclick="openModal('STAR MAKER 4.300 Coin', 'Rp. 989.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🏅</div><div class="product-name">4.300 Coin</div><div class="product-price">Rp. 989.000</div></div></div><div class="product-card" onclick="openModal('STAR MAKER 8.600 Coin', 'Rp. 1.905.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🏅</div><div class="product-name">8.600 Coin</div><div class="product-price">Rp. 1.905.000</div></div></div><div class="product-card" onclick="openModal('STAR MAKER 17.200 Coin', 'Rp. 4.100.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🏅</div><div class="product-name">17.200 Coin</div><div class="product-price">Rp. 4.100.000</div></div></div><div class="product-card" onclick="openModal('STAR MAKER 43.000 Coin', 'Rp. 9.500.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🏅</div><div class="product-name">43.000 Coin</div><div class="product-price">Rp. 9.500.000</div></div></div></div></section>
+        <section id="sugo" class="content-section"><h1 class="section-title">🌟 Top Up Coin SUGO</h1><div class="product-grid"><div class="product-card" onclick="openModal('SUGO 1.200 Coin', 'Rp. 16.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🌟</div><div class="product-name">1.200 Coin</div><div class="product-price">Rp. 16.000</div></div></div><div class="product-card" onclick="openModal('SUGO 2.400 Coin', 'Rp. 32.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🌟</div><div class="product-name">2.400 Coin</div><div class="product-price">Rp. 32.000</div></div></div><div class="product-card" onclick="openModal('SUGO 6.500 Coin', 'Rp. 79.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🌟</div><div class="product-name">6.500 Coin</div><div class="product-price">Rp. 79.000</div></div></div><div class="product-card" onclick="openModal('SUGO 12.500 Coin', 'Rp. 171.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🌟</div><div class="product-name">12.500 Coin</div><div class="product-price">Rp. 171.000</div></div></div><div class="product-card" onclick="openModal('SUGO 37.500 Coin', 'Rp. 501.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🌟</div><div class="product-name">37.500 Coin</div><div class="product-price">Rp. 501.000</div></div></div><div class="product-card" onclick="openModal('SUGO 65.000 Coin', 'Rp. 809.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🌟</div><div class="product-name">65.000 Coin</div><div class="product-price">Rp. 809.000</div></div></div><div class="product-card" onclick="openModal('SUGO 130.000 Coin', 'Rp. 1.639.000', {text:['ID Game']})"><div class="product-card-content"><div class="product-icon">🌟</div><div class="product-name">130.000 Coin</div><div class="product-price">Rp. 1.639.000</div></div></div></div></section>
+        <section id="spotify" class="content-section"><h1 class="section-title">🎵 Promo SPOTIFY PREMIUM</h1><div class="product-grid"><div class="product-card" onclick="openModal('Spotify Premium 1 Bulan', 'Rp. 62.000', {text:['Email Spotify Anda']})"><div class="product-card-content"><div class="product-icon">🚀</div><div class="product-name">1 Bulan Premium</div><div class="product-price">Rp. 62.000</div></div></div><div class="product-card" onclick="openModal('Spotify Premium 3 Bulan', 'Rp. 178.000', {text:['Email Spotify Anda']})"><div class="product-card-content"><div class="product-icon">🚀</div><div class="product-name">3 Bulan Premium</div><div class="product-price">Rp. 178.000</div></div></div><div class="product-card" onclick="openModal('Spotify Premium 6 Bulan', 'Rp. 335.000', {text:['Email Spotify Anda']})"><div class="product-card-content"><div class="product-icon">🚀</div><div class="product-name">6 Bulan Premium</div><div class="product-price">Rp. 335.000</div></div></div></div></section>
+        <section id="unbanned" class="content-section"><h1 class="section-title">🚫 Jasa Unbanned WhatsApp</h1><div class="product-grid"><div class="product-card" onclick="openModal('Jasa Unbanned WhatsApp Sementara', 'Rp. 30.000', {text:['Nomor WhatsApp (cth: 08xxxx)']})"><div class="product-card-content"><div class="product-icon">✅</div><div class="product-name">Unbanned Sementara</div><div class="product-price">Rp. 30.000</div><div class="product-note">Estimasi progress 1 x 24 Jam</div></div></div><div class="product-card" onclick="openModal('Jasa Unbanned WhatsApp Permanent', 'Rp. 250.000', {text:['Nomor WhatsApp (cth: 08xxxx)']})"><div class="product-card-content"><div class="product-icon">🔥</div><div class="product-name">Unbanned Permanent</div><div class="product-price">Rp. 250.000</div><div class="product-note">Estimasi progress 2 - 4 Minggu. Jaminan uang kembali.</div></div></div></div></section>
+        <section id="youtube" class="content-section"><h1 class="section-title">📈 Jasa YouTube Organik</h1><h2 class="section-subtitle">100% User Organik Non Bot 🤖</h2><div class="product-grid"><div class="product-card" onclick="openModal('Jasa YouTube', 'Harga Sesuai Pesanan', {text:['Link Video/Channel'], textarea:['Deskripsi Pesanan (contoh: 1000 views, 500 likes, 100 subs)']})"><div class="product-card-content"><div class="product-icon">👁️👍🔔</div><div class="product-name">Views, Likes, Subscribe</div><div class="product-price">Mulai dari Rp. 50</div><div class="product-note">View: Rp. 50/view<br>Like: Rp. 100/like<br>Subscribe: Rp. 200/sub</div></div></div></div></section>
+        <section id="location" class="content-section"><h1 class="section-title">📍 Lokasi Kami</h1><p style="text-align:center; margin-bottom:20px;">Jl. Jaya Raya Menceng Jaya 25, Cengkareng Barat, Jakarta Barat.<br>(Patokan: Dekat SMPN 249)</p><div id="map-container" style="padding:10px; background:var(--light-bg); border-radius:15px;"><iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.040178945939!2d106.7117138147164!3d-6.125219195563391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6a031e0fffffff%3A0x6b4c1c9b6b261183!2sSMPN%20249%20Jakarta!5e0!3m2!1sen!2sid!4v1662524456532!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></section>
+    </main>
+    
+    <!-- Modal Checkout (Sama, tidak ada perubahan) -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content"><span class="close-btn" onclick="closeModal()">×</span><h2 id="modalTitle">Formulir Checkout</h2><form id="checkoutForm" class="modal-form"><div class="form-group"><label>Produk:</label><input type="text" id="productName" readonly></div><div class="form-group"><label>Harga:</label><input type="text" id="productPrice" readonly></div><div id="dynamicInputs"></div><label for="upload-proof" id="upload-label"><i class="fas fa-cloud-upload-alt"></i> Upload Bukti Pembayaran (Gopay)</label><input type="file" id="upload-proof" accept="image/*"><p id="fileName">Belum ada file dipilih</p><p style="text-align:center; margin:15px 0; font-size:0.9em;">Kirim pembayaran ke Gopay: <strong>0895340205302</strong></p><button type="button" class="submit-btn" onclick="sendToWhatsApp()">Kirim Pesanan ke Admin</button></form></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- KONTEN NOTIFIKASI (SAMA, TIDAK DIUBAH) ---
+            const marqueeText = `<span>🤖 Selamat Datang di Nabila Shop Gaming & Digital 🤖</span><span> PUSAT TOP UP & JASA DIGITAL TERPERCAYA </span><span> DEVELOPER: Nabila Shop Team </span><span> PEMBAYARAN: Transfer ke Gopay 0895340205302 lalu upload bukti transfer. </span><span>🔥 PROMO MLBB FLASH SALE: 1000 DM HANYA Rp. 203.000! </span><span>🚀 PROMO FF: 720 DM HANYA Rp. 120.000! </span><span>🙃 PROMO HAGO: 915 DM HANYA Rp. 325.000! </span><span>🛒 PROMO BIGO: 1.000 DM HANYA Rp. 410.000! </span><span>🏅 PROMO STAR MAKER: 860 Koin HANYA Rp. 209.000! </span><span>🌟 PROMO SUGO: 6.500 Koin HANYA Rp. 79.000! </span><span>🎵 SPOTIFY PREMIUM MULAI DARI Rp. 62.000! </span><span>🚫 JASA UNBANNED WHATSAPP PERMANENT - GARANSI UANG KEMBALI! </span><span>📈 JASA VIEW, LIKE & SUBSCRIBE YOUTUBE 100% ORGANIK! </span>`;
+            document.querySelector('.marquee-content').innerHTML = marqueeText.repeat(5);
+
+            // --- FUNGSI BARU: PENGATUR MENU MOBILE ---
+            const menuToggle = document.getElementById('menu-toggle');
+            const body = document.body;
+            menuToggle.addEventListener('click', function() {
+                body.classList.toggle('sidebar-open');
+            });
+            
+            // --- SCRIPT NAVIGASI SPA (DENGAN PENAMBAHAN) ---
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    contentSections.forEach(s => s.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    const targetId = this.getAttribute('href');
+                    document.querySelector(targetId).classList.add('active');
+                    localStorage.setItem('activePage', targetId);
+                    
+                    // PENAMBAHAN: Otomatis tutup sidebar setelah menu diklik di mobile
+                    if (window.innerWidth <= 800) {
+                        body.classList.remove('sidebar-open');
+                    }
+                });
+            });
+            
+            // --- SISA SCRIPT (SAMA, TIDAK DIUBAH) ---
+            const activePage = localStorage.getItem('activePage');
+            if (activePage && document.querySelector(`.nav-link[href="${activePage}"]`)) {
+                document.querySelector('.nav-link.active').classList.remove('active');
+                document.querySelector('.content-section.active').classList.remove('active');
+                document.querySelector(`.nav-link[href="${activePage}"]`).classList.add('active');
+                document.querySelector(activePage).classList.add('active');
+            }
+
+            const fileInput = document.getElementById('upload-proof');
+            const fileNameDisplay = document.getElementById('fileName');
+            fileInput.addEventListener('change', () => {
+                fileNameDisplay.textContent = fileInput.files.length > 0 ? fileInput.files[0].name : 'Belum ada file dipilih';
+            });
+        });
+
+        // --- SCRIPT MODAL & WHATSAPP (SAMA, TIDAK DIUBAH) ---
+        const modal=document.getElementById("checkoutModal"),dynamicInputsContainer=document.getElementById("dynamicInputs");function openModal(e,t,o){document.getElementById("productName").value=e,document.getElementById("productPrice").value=t,dynamicInputsContainer.innerHTML="",o.text&&o.text.forEach(e=>{const t=`input_${e.replace(/\s+/g,"")}`;dynamicInputsContainer.innerHTML+=`\n                        <div class="form-group">\n                            <label for="${t}">${e}</label>\n                            <input type="text" id="${t}" required>\n                        </div>\n                    `}),o.textarea&&o.textarea.forEach(e=>{const t=`input_${e.replace(/\s+/g,"")}`;dynamicInputsContainer.innerHTML+=`\n                        <div class="form-group">\n                            <label for="${t}">${e}</label>\n                            <textarea id="${t}" required></textarea>\n                        </div>\n                    `}),modal.style.display="block"}function closeModal(){modal.style.display="none",document.getElementById("checkoutForm").reset(),document.getElementById("fileName").textContent="Belum ada file dipilih"}window.onclick=e=>{e.target==modal&&closeModal()};function sendToWhatsApp(){const e="6285810526151",t=document.getElementById("productName").value,o=document.getElementById("productPrice").value;let n=`*🛒 PESANAN BARU - NABILA SHOP 🤖*\n\n`;n+=`*Produk:* ${t}\n`,n+=`*Harga:* ${o}\n\n*DATA PEMBELI:*\n`;let d=!0;const c=dynamicInputsContainer.querySelectorAll('input[type="text"], textarea');if(c.forEach(e=>{const t=e.previousElementSibling.innerText;e.value.trim()||(d=!1),n+=`*${t}:* ${e.value}\n`}),!d)return void alert("Mohon isi semua data yang diperlukan!");if(0===document.getElementById("upload-proof").files.length)return void alert("Mohon upload bukti pembayaran!");n+=`\n*Status Pembayaran:* Bukti transfer sudah diupload.\n\nMohon segera proses pesanan saya. Terima kasih!`;const l=encodeURIComponent(n);window.open(`https://wa.me/${e}?text=${l}`,"_blank"),alert("Anda akan diarahkan ke WhatsApp untuk mengirim pesanan. Jangan lupa kirim juga file bukti pembayaran yang sudah Anda pilih tadi secara manual di chat WhatsApp."),closeModal()}
+    </script>
+</body>
+</html>
